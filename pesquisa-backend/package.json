@@ -1,0 +1,22 @@
+{
+  "name": "pesquisa-wordpress",
+  "version": "0.0.1",
+  "description": "Aplicativo para validar a existencia da tecnologia wordpress nos domínios.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Roberto",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "dotenv-safe": "^8.2.0",
+    "express": "^4.18.1",
+    "form-data": "^4.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.4",
+    "os": "^0.1.2",
+    "read-excel-file": "^5.2.28"
+  }
+}
