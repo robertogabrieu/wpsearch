@@ -13,7 +13,7 @@ router.post(
   (req, res) => {
     let file = req.file;
     requestController.handleExcelFile(file.path);
-    res.send(200);
+    res.status(200).json({message: "O processo está sendo executado!"});
   }
 );
 
