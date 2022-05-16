@@ -7,7 +7,7 @@ function auth(req) {
     //auth ok
     const id = 1; //esse id viria do banco de dados
     const token = jwt.sign({ id }, process.env.SECRET, {
-      expiresIn: 300, // expires in 5min
+      expiresIn: (3600000 * 48), // expires in 1hour
     });
     return { auth: true, token: token, message: "Login efetuado com sucesso!" };
   }
