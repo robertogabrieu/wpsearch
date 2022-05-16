@@ -14,7 +14,7 @@ export default function FooterAdmin() {
                   href="https://www.creative-tim.com?ref=nr-footer-admin"
                   className="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1"
                 >
-                  Creative Tim
+                  DKMA Tecnologia e Marketing
                 </a>
               </div>
             </div>
@@ -25,7 +25,7 @@ export default function FooterAdmin() {
                     href="https://www.creative-tim.com?ref=nr-footer-admin"
                     className="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3"
                   >
-                    Creative Tim
+                    DKMA Tecnologia e Marketing
                   </a>
                 </li>
                 <li>
@@ -33,7 +33,7 @@ export default function FooterAdmin() {
                     href="https://www.creative-tim.com/presentation?ref=nr-footer-admin"
                     className="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3"
                   >
-                    About Us
+                    ManagerShelf
                   </a>
                 </li>
                 <li>
@@ -41,15 +41,7 @@ export default function FooterAdmin() {
                     href="http://blog.creative-tim.com?ref=nr-footer-admin"
                     className="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3"
                   >
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/creativetimofficial/notus-react/blob/main/LICENSE.md?ref=nr-footer-admin"
-                    className="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3"
-                  >
-                    MIT License
+                    WhatsAll
                   </a>
                 </li>
               </ul>
