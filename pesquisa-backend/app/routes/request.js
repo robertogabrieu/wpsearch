@@ -4,17 +4,20 @@ const authMiddleware = require("../middlewares/auth");
 const os = require("os");
 const multer = require("multer");
 const upload = multer({ dest: os.tmpdir() });
-const requestController = require("../controllers/request");
+const RequestController = require("../controllers/request");
+const request = new RequestController();
 
 router.post(
   "/make_request",
   authMiddleware,
   upload.single("file"),
-  (req, res) => {
-    let file = req.file;
-    requestController.handleExcelFile(file.path);
-    res.status(200).json({message: "O processo está sendo executado!"});
-  }
+  request.makeRequest.bind(request)
+);
+
+router.get(
+  "/list_request",
+  authMiddleware,
+  request.listRequest.bind(request)
 );
 
 module.exports = router;
