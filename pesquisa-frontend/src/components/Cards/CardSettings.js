@@ -35,7 +35,6 @@ class CardSettingsForm extends Component{
 
   submitForm = async e => {
     e.preventDefault();
-    console.log(this.state);
     this.setState({ isSubmitting: true });
 
     var myHeaders = new Headers();
@@ -43,6 +42,8 @@ class CardSettingsForm extends Component{
 
     var formdata = new FormData();
     formdata.append("file", this.state.values.file);
+    formdata.append("prefix", JSON.stringify(this.state.values.prefix));
+    formdata.append("sufix", JSON.stringify(this.state.values.sufix));
 
     var requestOptions = {
       method: 'POST',
@@ -51,18 +52,11 @@ class CardSettingsForm extends Component{
       redirect: 'follow'
     };
 
-    const res = await fetch(`${REACT_APP_BACKEND_URL}/make_request`, requestOptions);
-
-    this.setState({ isSubmitting: false });
-
-    const data = await res.json();
-    if(!data.hasOwnProperty("error")) {
-      this.setState({ message: data.success })
-    }
-    else this.setState({ message: data.message, isError: true });
+    fetch(`${REACT_APP_BACKEND_URL}/make_request`, requestOptions);
 
     setTimeout(
       () => {
+        this.setState({ isSubmitting: false });
         this.setState({
           isError: false,
           message: "",
@@ -74,7 +68,7 @@ class CardSettingsForm extends Component{
         })
         document.querySelector("[type=file]").value = ""; // gambiarra
       },
-      1600
+      2600
     );
   };
 
@@ -175,7 +169,7 @@ class CardSettingsForm extends Component{
             </button>
           </div>
           <div className={`message ${this.state.isError && "error"}`}>
-            {this.state.isSubmitting ? "Aguarde..." : this.state.message}
+            {this.state.isSubmitting ? "A ação está sendo executada em background." : this.state.message}
           </div>
         </form>
       </div>
