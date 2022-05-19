@@ -1,11 +1,18 @@
 const https = require("https");
+const http = require("http");
 
 class Url {
   // wrap node's https.get stream call as a promise
   // note: assumes utf-8 encoded data payload to get.
   async getdata(url) {
     return new Promise((resolve, reject) => {
-      https
+      let protocol;
+      if(url.includes('https://'))
+        protocol = https;
+      else
+        protocol = http;
+      
+      protocol
         .get(url, (res) => {
           let status = res.statusCode;
           console.log(status);
@@ -44,9 +51,9 @@ class Url {
   handleGetReturn(res) {}
 
   sanitizeUrl(url) {
+    url = url.split('@').pop()
     const urlObject = new URL(url);
-    let domain = urlObject.hostname.replace("www.", "");
-    domain = domain.replace(/\.com|\.net|\.org|\.info|\.br/gi, "");
+    let domain = urlObject.hostname.replace(/www\.|\.com|\.net|\.org|\.info|\.br/gi, "");
     return domain;
   }
 }
