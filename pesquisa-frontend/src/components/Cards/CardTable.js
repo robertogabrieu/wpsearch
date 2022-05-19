@@ -34,7 +34,12 @@ class ListRequests extends Component{
   searchUsers = e => {
     let users = this.state.allUsers;
     let searchValue = e.target.value;
-    let found = users.filter( o => (o.prefix+o.domain+o.sufix).toLowerCase().includes(searchValue.toLowerCase()) );
+    let found = users.filter( o => {
+      return (
+        (o.prefix+o.domain+o.sufix).toLowerCase().includes(searchValue.toLowerCase()) ||
+        o.wp_text.toLowerCase().includes(searchValue.toLowerCase())
+      )
+    } );
     this.setState({ users: found });
   }
 
@@ -72,7 +77,7 @@ class ListRequests extends Component{
           {user.status}
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-          {user.wp ? 'É wordpress' : 'Não é wordpress'}
+          {user.wp_text}
         </td>
       </tr>
     )

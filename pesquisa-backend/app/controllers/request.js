@@ -60,6 +60,21 @@ class Request{
 
   async listRequest(req, res){
     await this.db.find({}).exec().then((data) => {
+      for (let index = 0; index < data.length; index++) {
+        const request = data[index];
+
+        if(request.wp) 
+          data[index] = {
+            ...data[index]._doc,
+            wp_text: 'É wordpress'
+          };
+        else 
+          data[index] = {
+            ...data[index]._doc,
+            wp_text: 'Não é'
+          };
+      }
+
       return res.status(200).json(data);
     }).catch((err) => {
       console.log(err);
