@@ -22,8 +22,9 @@ rm -i libssl1.1_1.1.0g-2ubuntu4_amd64.deb
 Instale e crie uma collection no MongoDB
 ```
 sudo apt update
-sudo apt install mongodb-org
+sudo apt install mongodb-org -y
 sudo systemctl enable mongod
+sudo systemctl start mongod
 mongo
 use wpsearch
 ```
@@ -54,7 +55,7 @@ Insira o código abaixo
 ```
 SECRET=MRd2021**a
 FRONTEND_URL=http://localhost:3000
-MONGO_URL=127.0.0.1:27017
+MONGO_URL=localhost:27017
 ```
 
 # Inicie o projeto Node
@@ -76,7 +77,7 @@ nano .env
 ```
 Insira o código abaixo
 ```
-BACKEND_URL=http://127.0.0.1:4000
+BACKEND_URL=http://localhost:4000
 ```
 
 # Inicie o projeto React
