@@ -10,7 +10,8 @@ class ListRequests extends Component{
 
     this.state = {
       users: [],
-      allUsers: []
+      allUsers: [],
+      isLoading: false
     }
   }
 
@@ -24,11 +25,15 @@ class ListRequests extends Component{
       redirect: 'follow'
     };
 
+    this.setState({isLoading: true})
     fetch(`${REACT_APP_BACKEND_URL}/list_request`, requestOptions)
       .then(response => response.text())
       .then(result => {
         this.setState({ users: JSON.parse(result) });
         this.setState({ allUsers: JSON.parse(result) });
+      })
+      .then(() => {
+        this.setState({isLoading: false})
       })
       .catch(error => console.log('error', error));
   }
@@ -172,6 +177,9 @@ class ListRequests extends Component{
               }
             </tbody>
           </table>
+          { this.state.isLoading && 
+            <div style={{textAlign: "center", padding: "20px"}}>Aguarde... Estou buscando os dados que você pediu! :)</div> 
+          }
         </div>
       </>
     )
