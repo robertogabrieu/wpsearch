@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import useToken from '../../useToken';
+import { CSVLink } from "react-csv";
 
 const { REACT_APP_BACKEND_URL } = process.env;
 
@@ -31,6 +32,7 @@ class ListRequests extends Component{
       .then(result => {
         this.setState({ users: JSON.parse(result) });
         this.setState({ allUsers: JSON.parse(result) });
+        console.log(result);
       })
       .then(() => {
         this.setState({isLoading: false})
@@ -104,13 +106,28 @@ class ListRequests extends Component{
               >
                 Requests
               </h3>
-              <input
-                type="text"
-                name="search"
-                onChange={this.searchUsers}
-                className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-auto ease-linear transition-all duration-150"
-                placeholder="Pesquise aqui..."
-              />
+              <div>
+                <CSVLink
+                className="bg-lightBlue-500 text-white active:bg-lightBlue-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-3 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                {...{
+                  data: this.state.allUsers,
+                  headers: [
+                    { label: "Prefixo", key: "prefix" },
+                    { label: "Domínio", key: "domain" },
+                    { label: "Sufixo", key: "sufix" },
+                    { label: "Status", key: "status" },
+                    { label: "É wordpress?", key: "wp_text" }
+                  ],
+                  filename: 'Export.csv'
+                }}>Export to CSV</CSVLink>
+                <input
+                  type="text"
+                  name="search"
+                  onChange={this.searchUsers}
+                  className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-auto ease-linear transition-all duration-150"
+                  placeholder="Pesquise aqui..."
+                />
+              </div>
             </div>
           </div>
         </div>
