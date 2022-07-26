@@ -26,7 +26,8 @@ sudo apt install mongodb-org -y
 sudo systemctl enable mongod
 sudo systemctl start mongod
 mongo
-use wpsearch
+use wpfinder
+db.createCollection("requests")
 ```
 
 # Instalar o Nodemon
@@ -82,5 +83,6 @@ REACT_APP_BACKEND_URL=http://localhost:4000
 
 # Inicie o projeto React
 ```
-npm run install:clean
+npm run build:tailwind
+nodemon --exec npm start
 ```
