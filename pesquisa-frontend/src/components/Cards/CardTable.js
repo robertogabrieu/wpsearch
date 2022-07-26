@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import useToken from '../../useToken';
 
+const { REACT_APP_BACKEND_URL } = process.env;
+
 class ListRequests extends Component{
   constructor(props){
     super();
@@ -22,7 +24,7 @@ class ListRequests extends Component{
       redirect: 'follow'
     };
 
-    fetch("http://localhost:4000/list_request", requestOptions)
+    fetch(`${REACT_APP_BACKEND_URL}/list_request`, requestOptions)
       .then(response => response.text())
       .then(result => {
         this.setState({ users: JSON.parse(result) });
