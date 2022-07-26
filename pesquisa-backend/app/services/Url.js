@@ -41,7 +41,7 @@ class Url {
         })
         .on("error", (e) => {
           console.log(e);
-          reject({
+          resolve({
             data: false,
           });
         });
