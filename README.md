@@ -77,7 +77,7 @@ nano .env
 ```
 Insira o código abaixo
 ```
-BACKEND_URL=http://localhost:4000
+REACT_APP_BACKEND_URL=http://localhost:4000
 ```
 
 # Inicie o projeto React
