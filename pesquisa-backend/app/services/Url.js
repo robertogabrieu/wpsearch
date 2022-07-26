@@ -52,8 +52,7 @@ class Url {
 
   sanitizeUrl(url) {
     url = url.split('@').pop()
-    const urlObject = new URL(url);
-    let domain = urlObject.hostname.replace(/www\.|\.com|\.net|\.org|\.info|\.br/gi, "");
+    let domain = url.replace(/http:\/\/|www\.|\.com|\.net|\.org|\.info|\.br/gi, "");
     return domain;
   }
 }
