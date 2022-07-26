@@ -1,7 +1,9 @@
 # Instalar o NodeJS
+```
 curl -s https://deb.nodesource.com/setup_16.x | sudo bash
 sudo apt install nodejs
 sudo apt install npm
+```
 
 # Instalar o MongoDB
 Configure a instalação do MongoDB
@@ -17,7 +19,7 @@ sudo dpkg -i ./libssl1.1_1.1.0g-2ubuntu4_amd64.deb
 rm -i libssl1.1_1.1.0g-2ubuntu4_amd64.deb
 ```
 
-Instale o MongoDB
+Instale e crie uma collection no MongoDB
 ```
 sudo apt update
 sudo apt install mongodb-org
